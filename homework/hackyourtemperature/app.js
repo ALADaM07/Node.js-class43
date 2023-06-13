@@ -1,5 +1,5 @@
 import express from 'express';
-import { weatherKey } from './sources/keys.js';
+import { weatherAPIConfig } from './sources/keys.js';
 const apiKey = weatherKey.API_KEY;
 import fetch from 'node-fetch';
 
@@ -24,8 +24,13 @@ app.post('/weather', async (req, res) => {
       return;
     }
   } catch (err) {
-    console.log(err.message);
-    res.status(404).send({ weatherText: 'City is not found!' });
+    if (err.statusCode === 404) {
+      console.log(err.message);
+      res.status(404).send({ weatherText: 'City is not found!' });
+    } else {
+      console.log(err.message);
+      res.status(500).send({ error: 'Internal Server Error' });
+    }
   }
 });
 
