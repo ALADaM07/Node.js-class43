@@ -19,7 +19,7 @@ describe('POST /', () => {
   });
 });
 describe('POST /', () => {
-  it('should return a city name and temp ', async () => {
+  it('Should return a 404 status code', async () => {
     const response = await request.post('/weather').send({
       cityName: 'gasdhvj',
     });
