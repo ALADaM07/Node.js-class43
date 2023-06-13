@@ -15,20 +15,9 @@ describe('POST /', () => {
       cityName: 'Amsterdam',
     });
     expect(response.status).toBe(200);
+    expect(response.body.weatherText).toContain(`City: Amsterdam, Temp: `);
   });
 });
-
-// describe('POST /', () => {
-//   it('should return a city name and temp ', async () => {
-//     const response = await request.post('/weather').send({
-//       cityName: 'Amsterdam',
-//     });
-//     expect(response.send).toBe({
-//       weatherText: 'City: Amsterdam, Temp: 286.01',
-//     });
-//   });
-// });
-
 describe('POST /', () => {
   it('should return a city name and temp ', async () => {
     const response = await request.post('/weather').send({
@@ -37,12 +26,3 @@ describe('POST /', () => {
     expect(response.status).toBe(404);
   });
 });
-
-// describe('POST /', () => {
-//   it('should return a city name and temp ', async () => {
-//     const response = await request.post('/weather').send({
-//       cityName: 'gasdhvj',
-//     });
-//     expect(response.send).toBe({ weatherText: 'City is not found!' });
-//   });
-// });
