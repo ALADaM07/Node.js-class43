@@ -1,6 +1,6 @@
 import express from 'express';
 import { weatherAPIConfig } from './sources/keys.js';
-const apiKey = weatherKey.API_KEY;
+const apiKey = weatherAPIConfig.API_KEY;
 import fetch from 'node-fetch';
 
 const app = express();
