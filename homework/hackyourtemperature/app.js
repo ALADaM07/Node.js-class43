@@ -10,6 +10,11 @@ app.get('/', (req, res) => res.send('Hello from backend to frontend!'));
 app.post('/weather', async (req, res) => {
   try {
     const cityName = req.body.cityName;
+    if (cityName.length === 0) {
+      res
+        .status(400)
+        .send({ message: `Please make sure you provided a City Name` });
+    }
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
